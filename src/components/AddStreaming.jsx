@@ -1,21 +1,25 @@
+import { useContext } from "react";
 import CardSuscripcion from "./Cards/CardSuscripcion";
 import VistaDeGastos from "./Cards/VistaDeGastos";
 import FormStreaming from "./forms/FormStreaming";
+import { datosContext } from "../Context/createContext";
 
-function AddStreaming({ setSubs, subs, presu, disponible, gastoT }) {
+function AddStreaming() {
+  const { subDispach, subs } = useContext(datosContext);
+  console.log(subs);
   return (
     <div>
-      <VistaDeGastos presu={presu} disponible={disponible} gastoT={gastoT} />
+      <VistaDeGastos />
       <div>
         <h2 className="text-lg font-bold">Tus Gastos</h2>
-        <FormStreaming setSubs={setSubs} subs={subs} disponible={disponible} />
+        <FormStreaming />
         <div>
           <ul className="flex flex-col gap-3">
             {subs.map((sub) => (
               <CardSuscripcion
                 key={sub.id}
                 sub={sub}
-                setSubs={setSubs}
+                subDispach={subDispach}
                 subs={subs}
               />
             ))}

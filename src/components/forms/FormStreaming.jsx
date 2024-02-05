@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { datosContext } from "../../Context/createContext";
 
-function FormStreaming({ setSubs, subs, disponible }) {
+function FormStreaming() {
+  const { subDispach, disponible } = useContext(datosContext);
   const [subcription, setSuscription] = useState("");
   const [amount, setAmount] = useState("");
   const [err, setError] = useState(false);
   const handelSumit = (e) => {
     e.preventDefault();
     if (amount > 0 && subcription != "" && amount < disponible) {
-      const newList = [
-        ...subs,
-        {
-          id: Math.random(),
-          subcription,
-          amount,
-        },
-      ];
-      setSubs(newList);
+      const newList = {
+        id: Math.random(),
+        subcription,
+        amount,
+      };
+
+      subDispach({ type: "add", module: newList });
       setAmount("");
       setSuscription("");
       setError(false);

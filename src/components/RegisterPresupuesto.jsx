@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { datosContext } from "../Context/createContext";
 
-function RegisterPresupuesto({ setPresu }) {
+function RegisterPresupuesto() {
+  const { setPresu } = useContext(datosContext);
   const [valor, setValor] = useState("");
   const handelSumit = (e) => {
     e.preventDefault();

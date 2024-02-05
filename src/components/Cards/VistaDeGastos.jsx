@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { getDolar } from "../../Util/ConverterMoney";
+import { datosContext } from "../../Context/createContext";
 
-function VistaDeGastos({ presu, gastoT, disponible }) {
+function VistaDeGastos() {
+  const { presu, gastoT, disponible } = useContext(datosContext);
   return (
     <div>
       <h2 className="text-lg font-bold">Saldo</h2>
